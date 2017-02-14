@@ -1,0 +1,48 @@
+
+body {
+	text-align: center;
+	/*background-color: ##423228;*/
+	background-color: #B0B0B0;
+	color: black;
+ 	
+}
+
+
+
+#monks-cafe-1{text-align: left;}
+
+#monks-cafe-2{text-align: right;}
+
+
+#google-map {
+	width: 100%; 
+	height: 400px;
+
+}
+
+
+
+
+
+#second-image img.resize {
+	max-width: 50%;
+	max-height: 50%;
+}
+
+
+
+#reservations {
+	text-align: center;
+	
+
+}
+
+
+table, thead, tbody {
+	width: 70%;
+	margin-left: 15%;
+	margin-right: 15%;
+	border: 1px solid black;
+	
+}
+

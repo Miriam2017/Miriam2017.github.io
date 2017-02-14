@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name= "viewport" content= "width=device-width, initial scale=1">
+   <link rel ="stylesheet" type="text/css" href= "styles.css">
+   <script type="text/javascript" src="main.js"></script>
+  
+   <title> You're Hungry, Come Eat </title>
+
+</head>
+<body>
+
+
+
+<!-- top-caption and photo-->
+   <div id=top>
+   		<h1 id = "monks-cafe-1">Monk's Cafe</h1>
+   		<h2  id = "monks-cafe-2"> Best Coffee Shop Ever. Really. </h2>
+   
+   		
+   		<img id="tom-image" src="http://circuits-assets.generalassemb.ly/prod/asset/5475/toms-restaurant.jpg" height = "50%"  width= "100%" alt= "Toms-restaurant from Seinfeld">
+
+
+   </div>
+
+
+<!-- reservations section, with 2-box input and submit button-->
+   <div id="reservations"> 
+   <!--make the reservation-->
+   		<div id="make-a-reservation" >
+   			<h2 > Come eat! Make your reservation here </h2>
+   			<form >
+   				<input id="name" type="text" placeholder="Your Name">
+   				<input id="day" type="text" placeholder="Day">
+   				<br>
+   				<button>Press to Confirm</button>
+
+   			</form>
+
+   		</div>
+
+
+ <!--look at existing reservations-->
+   		<div id="existing reservations" >
+   			<h2> Guess who else is coming to dinner? </h2>
+
+
+
+
+ <!--make the table - will connect to handlebars for data input-->
+
+   			<table  id="res-table"  >
+   				
+   			
+				<thead>
+					<th>Name</th>
+					<th>Day</th>
+				</thead>
+				<tbody> [ form data will publish here ] </tbody>
+			</table>
+   		</div>
+   	</div> <!-- end reservations -->
+
+
+
+  <!-- make the google map API . yay, finally got it to work!--> 
+ 	<div  id="find-us">
+ 		 <h2 > Find us</h2>
+ 		 
+ 		 <div id="google-map" > </div>
+
+ 		 <script>
+			function initMap() {
+				var location = {lat: 40.8054491, lng: -73.9654415};
+
+				var map = new google.maps.Map(document.getElementById("google-map"), {				
+					center: location,
+					zoom: 12,
+					scrollwheel: false
+					});
+			
+
+				var marker = new google.maps.Marker({
+					position: location,
+					map: map,
+					name: "Cafe"
+
+				});
+			}
+					
+	
+			
+			    </script>
+
+		 <script 
+		 src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA82p4xLZ2yBQc4-6TyfGYnWXiSOSFx2iI&callback=initMap" async defer>
+    	
+    	</script>
+	</div> 
+<!--end map section-->
+	
+
+
+
+<!-- begin customer review section , do js later--> 
+<div id="customer-reviews">	 
+   
+   <div id="second-image"> 
+   		<h2> You know you love us, so leave a review. </h2>
+   		<img src="http://circuits-assets.generalassemb.ly/prod/asset/5474/jerry.jpg" height = "75%" width="75%" alt="jerry">
+   		<h2>   “Big lettuce, big carrots, tomatoes like volleyballs.”<br>
+				— Jerry Seinfeld, on The BIG Salad    </h2>
+   </div>
+ </div>
+
+    <script src="js/jquery-3.1.1min.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	<script src="js/handlebars-v4.0.5.js"></script>
+	<script src="js/main.js"></script>
+
+
+   
+
+
+<!-- sync to github pages - add, commit, push, slides 71-83 adn 110-112) -->
+
+
+</body>
+<footer></footer>
+
+</html>
