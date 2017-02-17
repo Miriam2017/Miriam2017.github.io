@@ -1,4 +1,4 @@
-$(#google-map).html(function()
+$("#google-map").html(function()
 	initMap();
 
 }):
