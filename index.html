@@ -1,123 +1,148 @@
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-   <meta charset="UTF-8">
-   <meta name= "viewport" content= "width=device-width, initial scale=1">
-   <link rel ="stylesheet" type="text/css" href= "styles.css">
-   <script type="text/javascript" src="main.js"></script>
-  
-   <title> You're Hungry, Come Eat </title>
 
+  <meta charset="UTF-8">
+  <title> You're Hungry, Come Eat </title>
+
+  <link rel = "stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+  <link rel ="stylesheet" type="text/css" href= "styles.css">
+
+  <script src="js/main.js"></script>
+ 
 </head>
-<body>
 
 
+<body data-spy="scroll" data-target=".navbar-inverse" data-offset="50">
+
+ 
 
 <!-- top-caption and photo-->
-   <div id=top>
-   		<h1 id = "monks-cafe-1">Monk's Cafe</h1>
-   		<h2  id = "monks-cafe-2"> Best Coffee Shop Ever. Really. </h2>
+  <div id="top material">
+
+   		<h1 id ="monks-cafe-1">Monk's Cafe</h1>
+   		<h2 id ="monks-cafe-2">Best Coffee Shop Ever. Really.</h2>
    
    		
-   		<img id="tom-image" src="http://circuits-assets.generalassemb.ly/prod/asset/5475/toms-restaurant.jpg" height = "50%"  width= "100%" alt= "Toms-restaurant from Seinfeld">
+   		<img id="tom-image" src="http://circuits-assets.generalassemb.ly/prod/asset/5475/toms-restaurant.jpg" height = "50%"  width= "100%" alt= "Toms restaurant from Seinfeld">
 
-
-   </div>
-
-
-<!-- reservations section, with 2-box input and submit button-->
-   <div id="reservations"> 
-   <!--make the reservation-->
-   		<div id="make-a-reservation" >
-   			<h2 > Come eat! Make your reservation here </h2>
-   			<form >
-   				<input id="name" type="text" s placeholder="Your Name">
-   				<input id="day" type="text"  placeholder="Day">
-   				<br>
-   				<button>Press to Confirm</button>
-
-   			</form>
-
-   		</div>
-
-
- <!--look at existing reservations-->
-   		<div id="existing reservations" >
-   			<h2> Guess who else is coming to dinner? </h2>
+  </div>
 
 
 
+<!-- reservations section, with 2-box input and submit button-
+where does this go? <script src="https://www.gstatic.com/firebasejs/3.6.9/firebase.js"></script>
+->
+  
+   <!- make the reservation-->
+<div id="reservation-maker" class="row reservation-form-container" > 
 
- <!--make the table - will connect to handlebars for data input-->
+       <h2> Come eat! Make your reservation here </h2>
 
-   			<table  id="res-table"  >
-   				
+          <div class="col-md-12 text-center reservation-form">
    			
-				<thead>
-					<th>Name</th>
-					<th>Day</th>
+              <form class= "form-inline reservations">
+<!--1st form name-->
+                  <div class= "form-group">
+            
+                     <input type="text" class="form-control reservation-name" placeholder= "Your name">
+                   </div>
+
+      <!--2d form date, with dropdown -->
+              <div class="form-group">
+
+                  <div class="dropdown">
+                    
+                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle ="dropdown">
+                      Select a Day              
+                       <span class="caret"></span>
+                    </button>
+                     
+                      <ul class="dropdown-menu reservation-day">
+
+                            <li> <a>Today</a> </li>
+                           
+                            <li> <a>Tomorrow</a> </li>
+                          
+                            <li> <a>The day after next</a> </li>
+                 
+                      </ul> 
+
+                    </div>
+                </div>
+          
+              <button class="btn btn-default reservation-button">Set Reservation</button>
+           </form>
+        </div>
+    </div> 
+
+	
+<!--Reservations table-->
+<table class="table table-striped col-md-12 container-fluid">
+		 <h3> You're in Great Company, Look Who Else is Coming to Dinner </h3>
+        <thead>
+					 <th>Name</th>
+					 <th>Day</th>
 				</thead>
-				<tbody> [ form data will publish here ] </tbody>
-			</table>
-   		</div>
-   	</div> <!-- end reservations -->
+				<tbody class="reservation-list"> </tbody>
+</table>
+
+<!--reservation-list template -->
+<script id="reservation-template" type="text/x-handlebars-template">
+
+    <tr>
+        <td>{{name}}</td>
+        <td>{{day}}</td>
+     </tr>   
+
+</script>
+<!--
+      <a href ="#" class="edit">Edit</a>
+      <a href ="#" class="remove">Remove</a>
+-->
+   		
+   	<!-- end reservations -->
 
 
 
   <!-- make the google map API . yay, finally got it to work!--> 
- 	<div  id="find-us">
- 		 <h2 > Find us</h2>
- 		 
- 		 <div id="google-map" > </div>
-
- 		 <script>
-			function initMap() {
-				var location = {lat: 40.8054491, lng: -73.9654415};
-
-				var map = new google.maps.Map(document.getElementById("google-map"), {				
-					center: location,
-					zoom: 12,
-					scrollwheel: false
-					});
-			
-
-				var marker = new google.maps.Marker({
-					position: location,
-					map: map,
-					name: "Cafe"
-
-				});
-			}
-			</script>
-
-		 <script 
-		 src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA82p4xLZ2yBQc4-6TyfGYnWXiSOSFx2iI&callback=initMap" async defer>
-    	
-    	</script>
-	</div> 
+ 	<div id="restaurant-finder"
+    <h2> Find us</h2>
+      <div id="google-map" class="container-fluid restaurant-locator"></div> 
+   	<!--google maps-->
+     <script 
+        src="https://maps.googleapis.com/maps/api/ js?key=AIzaSyA82p4xLZ2yBQc4-6TyfGYnWXiSOSFx2iI&callback=initMap" async defer>
+      </script>
+	</div>
 <!--end map section-->
 	
 
+<div id="review">
 
+   		<img src="http://circuits-assets.generalassemb.ly/prod/asset/5474/jerry.jpg" height = "60%" width="60%" alt="jerry">
 
-<!-- begin customer review section , do js later--> 
-<div id="customer-reviews">	 
-   
-   <div id="second-image"> 
-   		<h2> You know you love us, so leave a review. </h2>
-   		<img src="http://circuits-assets.generalassemb.ly/prod/asset/5474/jerry.jpg" height = "75%" width="75%" alt="jerry">
    		<h2>   “Big lettuce, big carrots, tomatoes like volleyballs.”<br>
 				— Jerry Seinfeld, on The BIG Salad    </h2>
-   </div>
+ 
  </div>
 
-    <script src="js/jquery-3.1.1.min.js"></script>
-	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-	<script src="js/handlebars-v4.0.5.js"></script>
-	<script src="js/main.js"></script>
+<!--scripts: firebase, jquery, bootstrap, handlebars, custom js-->
+<script src="https://www.gstatic.com/firebasejs/3.3.0/firebase.js"></script>
+
+<script src="js/jquery-3.1.1.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"</script>
+
+<script src="js/handlebars-v4.0.5.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
+
+<script src="js/main.js"></script>
 
 
-   
 
 
 <!-- sync to github pages - add, commit, push, slides 71-83 adn 110-112) -->
@@ -126,4 +151,5 @@
 </body>
 <footer></footer>
 
-</html>
+</html> 
+-->
